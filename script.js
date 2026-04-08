@@ -148,18 +148,27 @@ function renderQuestion(){
 document.getElementById('submitAnswer').addEventListener('click', ()=>{
   const selected = document.querySelector('.option.selected');
   if(!selected){ alert('Please select an option.'); return; }
-  const answer = selected.textContent;
+
   const correct = QUIZ[qIndex].ans;
-  if(answer === correct){
+
+  document.querySelectorAll('.option').forEach(opt => {
+    // disable further clicking
+    opt.style.pointerEvents = 'none';
+    if(opt.textContent === correct){
+      opt.classList.add('correct'); // always highlight correct
+    }
+  });
+  if(selected.textContent === correct){
     score++;
     document.getElementById('feedback').textContent = 'Correct ✅';
   } else {
+    selected.classList.add('wrong'); // mark wrong selection
     document.getElementById('feedback').textContent = `Incorrect — correct: ${correct}`;
   }
   document.getElementById('submitAnswer').style.display='none';
   document.getElementById('nextQ').style.display='inline-block';
-  // if last question show results on next
 });
+
 document.getElementById('nextQ').addEventListener('click', ()=>{
   qIndex++;
   document.getElementById('feedback').textContent='';
