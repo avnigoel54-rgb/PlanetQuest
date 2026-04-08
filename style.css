@@ -253,6 +253,18 @@ body{
   .about-container{flex-direction:column}
   main.site-main { padding-top: 100px; } 
 }
+/* ✅ Correct answer (green) */
+.option.correct {
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+  color: #155724;
+}
 
+/* ❌ Wrong selected (red) */
+.option.wrong {
+  background-color: #f8d7da;
+  border: 2px solid #dc3545;
+  color: #721c24;
+}
 
 
