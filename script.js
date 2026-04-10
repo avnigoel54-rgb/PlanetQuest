@@ -127,6 +127,7 @@ let qIndex = 0, score = 0;
 const totalQ = QUIZ.length;
 function startQuiz(){
   qIndex=0; score=0;
+  totalQ = filteredQuiz.length;
   document.getElementById('result').style.display='none';
   document.getElementById('feedback').textContent='';
   renderQuestion();
@@ -166,7 +167,7 @@ document.getElementById('nextQ').addEventListener('click', ()=>{
   if(qIndex >= totalQ){
     // show result
     document.getElementById('result').style.display='block';
-    document.getElementById('scoreVal').textContent = score;
+    document.getElementById('scoreVal').textContent = `${score}/${totalQ}`;
     // store best score locally
     const best = Number(localStorage.getItem('planet_best_score')||0);
     if(score > best) localStorage.setItem('planet_best_score', score);
